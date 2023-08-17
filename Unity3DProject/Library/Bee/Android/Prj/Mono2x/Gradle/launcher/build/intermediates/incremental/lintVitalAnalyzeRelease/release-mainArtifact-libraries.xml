@@ -1,0 +1,32 @@
+<libraries>
+  <library
+      name="/Users/nabeelbaghoor/Github Projects/unity-background-service/Unity3DProject/Library/Bee/Android/Prj/Mono2x/Gradle@@:unityLibrary::release"
+      jars="/Users/nabeelbaghoor/Github Projects/unity-background-service/Unity3DProject/Library/Bee/Android/Prj/Mono2x/Gradle/unityLibrary/build/.transforms/28d9b0a742a45f5cf58c59c16ec792be/transformed/out/jars/classes.jar:/Users/nabeelbaghoor/Github Projects/unity-background-service/Unity3DProject/Library/Bee/Android/Prj/Mono2x/Gradle/unityLibrary/build/.transforms/28d9b0a742a45f5cf58c59c16ec792be/transformed/out/jars/libs/unity-classes.jar"
+      resolved="Gradle:unityLibrary:unspecified"
+      folder="/Users/nabeelbaghoor/Github Projects/unity-background-service/Unity3DProject/Library/Bee/Android/Prj/Mono2x/Gradle/unityLibrary/build/.transforms/28d9b0a742a45f5cf58c59c16ec792be/transformed/out"
+      manifest="AndroidManifest.xml"
+      resFolder="res"
+      assetsFolder="assets"
+      lintJar="lint.jar"
+      publicResources="public.txt"
+      symbolFile="R.txt"
+      externalAnnotations="annotations.zip"
+      proguardRules="proguard.txt"/>
+  <library
+      name="__local_aars__:/Users/nabeelbaghoor/Github Projects/unity-background-service/Unity3DProject/Library/Bee/Android/Prj/Mono2x/Gradle/unityLibrary/libs/unity-classes.jar:unspecified@jar"
+      jars="/Users/nabeelbaghoor/Github Projects/unity-background-service/Unity3DProject/Library/Bee/Android/Prj/Mono2x/Gradle/unityLibrary/libs/unity-classes.jar"
+      resolved="__local_aars__:/Users/nabeelbaghoor/Github Projects/unity-background-service/Unity3DProject/Library/Bee/Android/Prj/Mono2x/Gradle/unityLibrary/libs/unity-classes.jar:unspecified"/>
+  <library
+      name=":app-debug:@aar"
+      jars="/Users/nabeelbaghoor/.gradle/caches/transforms-3/854fe507ba9e90cebbc711bfc44eaf7e/transformed/app-debug/jars/classes.jar:/Users/nabeelbaghoor/.gradle/caches/transforms-3/854fe507ba9e90cebbc711bfc44eaf7e/transformed/app-debug/jars/libs/r-classes.jar"
+      resolved=":app-debug:"
+      folder="/Users/nabeelbaghoor/.gradle/caches/transforms-3/854fe507ba9e90cebbc711bfc44eaf7e/transformed/app-debug"
+      manifest="AndroidManifest.xml"
+      resFolder="res"
+      assetsFolder="assets"
+      lintJar="lint.jar"
+      publicResources="public.txt"
+      symbolFile="R.txt"
+      externalAnnotations="annotations.zip"
+      proguardRules="proguard.txt"/>
+</libraries>

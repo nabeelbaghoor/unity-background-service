@@ -63,7 +63,7 @@ public class PedometerService extends Service implements SensorEventListener {
         String input = "Counting your steps...";
         Intent notificationIntent = new Intent(this, Bridge.myActivity.getClass());
         PendingIntent pendingIntent = PendingIntent.getActivity(this,
-                0, notificationIntent, 0);
+                0, notificationIntent, PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_IMMUTABLE);
         Notification notification = new NotificationCompat.Builder(this, "PedometerLib")
                 .setContentTitle("Background Walking Service")
                 .setContentText(input)

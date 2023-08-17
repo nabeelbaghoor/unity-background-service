@@ -22,8 +22,8 @@ public class BackgroundService : MonoBehaviour
 
     private void Awake()
     {
-        SendActivityReference(PackageName);
-        GetCurrentSteps();
+        // SendActivityReference(PackageName);
+        // GetCurrentSteps();
     }
 
 
