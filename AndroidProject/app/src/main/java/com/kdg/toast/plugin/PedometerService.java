@@ -16,10 +16,13 @@ import androidx.core.app.NotificationManagerCompat;
 
 import java.util.Timer;
 import java.util.TimerTask;
+//import com.unity3d.player.UnityPlayer;
 
 public class PedometerService extends Service {
 
     String TAG = "PEDOMETER";
+    private static PluginCallback pluginCallback = null;
+//    private UnityPlayer mUnityPlayer;
     @Nullable
     @Override
     public IBinder onBind(Intent intent) {
@@ -52,15 +55,38 @@ public class PedometerService extends Service {
         startForeground(112, notification);
     }
 
+    public void SetPluginCallback(PluginCallback callback) {
+        pluginCallback = callback;
+    }
+    public void myPluginMethod() {
+        if(pluginCallback == null) {
+            Log.i(TAG, "myPluginMethod: pluginCallback is null");
+            return;
+        }
+
+        Log.i(TAG, "myPluginMethod: CALLED");
+        // Do something
+        pluginCallback.onSuccess("onSuccess");
+        // Do something horrible
+        pluginCallback.onError("onError");
+    }
 
     @Override
     public void onCreate() {
         Log.i(TAG, "onCreate: CREATED");
+
+        // Unity background
+        myPluginMethod();
+
+//        mUnityPlayer = new UnityPlayer(this);
+//        mUnityPlayer.UnitySendMessage("UnityServiceBridgeGameObject", "OnAndroidServiceMessage", "");
+
+        // Android background
         Timer timer = new Timer();
         TimerTask task = new TimerTask() {
             @Override
             public void run() {
-                System.out.println("testing background...");
+                System.out.println("Android-Testing background...");
             }
         };
 
@@ -72,11 +98,13 @@ public class PedometerService extends Service {
     public void onTaskRemoved(Intent rootIntent) {
         super.onTaskRemoved(rootIntent);
         Log.i(TAG, "onTaskRemoved: REMOVED");
+        myPluginMethod();
     }
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
         Log.i(TAG, "onStartCommand: STARTED");
+        myPluginMethod();
         createNotificationChannel();
         startNotification();
         super.onCreate();
@@ -86,6 +114,7 @@ public class PedometerService extends Service {
 
     @Override
     public void onDestroy() {
+//        mUnityPlayer.quit();
         super.onDestroy();
         Log.i(TAG, "onDestroy: DESTROYED");
     }

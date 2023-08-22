@@ -87,10 +87,6 @@ public final class Bridge extends Application {
         myActivity.stopService(serviceIntent);
 
     }
-    public static int GetCurrentSteps(){
-        Log.i("PEDOMETER", "FROM BRIDGE CLASS - GetCurrentSteps:"+1);
-        return 1;
-    }
 
     @Override
     public void onCreate() {
