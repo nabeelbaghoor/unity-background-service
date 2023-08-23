@@ -56,8 +56,10 @@ public class PedometerService extends Service {
     }
 
     public void SetPluginCallback(PluginCallback callback) {
+        Log.i(TAG, "SetPluginCallback: CALLED");
         pluginCallback = callback;
     }
+
     public void myPluginMethod() {
         if(pluginCallback == null) {
             Log.i(TAG, "myPluginMethod: pluginCallback is null");
@@ -81,30 +83,31 @@ public class PedometerService extends Service {
 //        mUnityPlayer = new UnityPlayer(this);
 //        mUnityPlayer.UnitySendMessage("UnityServiceBridgeGameObject", "OnAndroidServiceMessage", "");
 
-        // Android background
-        Timer timer = new Timer();
-        TimerTask task = new TimerTask() {
-            @Override
-            public void run() {
-                System.out.println("Android-Testing background...");
-            }
-        };
-
-        // Schedule the task to run every 5 seconds (5000 milliseconds)
-        timer.schedule(task, 0, 5000);
+//        // Android background
+//        Timer timer = new Timer();
+//        TimerTask task = new TimerTask() {
+//            @Override
+//            public void run() {
+//                System.out.println("Android-Testing background...");
+//            }
+//        };
+//
+//        // Schedule the task to run every 5 seconds (5000 milliseconds)
+//        timer.schedule(task, 0, 5000);
     }
 
     @Override
     public void onTaskRemoved(Intent rootIntent) {
         super.onTaskRemoved(rootIntent);
         Log.i(TAG, "onTaskRemoved: REMOVED");
+
+        // Unity background
         myPluginMethod();
     }
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
         Log.i(TAG, "onStartCommand: STARTED");
-        myPluginMethod();
         createNotificationChannel();
         startNotification();
         super.onCreate();
