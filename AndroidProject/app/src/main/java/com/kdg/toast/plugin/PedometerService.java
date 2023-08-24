@@ -16,13 +16,13 @@ import androidx.core.app.NotificationManagerCompat;
 
 import java.util.Timer;
 import java.util.TimerTask;
-//import com.unity3d.player.UnityPlayer;
+import com.unity3d.player.UnityPlayer;
 
 public class PedometerService extends Service {
 
     String TAG = "PEDOMETER";
     private static PluginCallback pluginCallback = null;
-//    private UnityPlayer mUnityPlayer;
+    private UnityPlayer mUnityPlayer;
     @Nullable
     @Override
     public IBinder onBind(Intent intent) {
@@ -77,23 +77,25 @@ public class PedometerService extends Service {
     public void onCreate() {
         Log.i(TAG, "onCreate: CREATED");
 
-        // Unity background
+        // android java proxy approach
         myPluginMethod();
 
-//        mUnityPlayer = new UnityPlayer(this);
-//        mUnityPlayer.UnitySendMessage("UnityServiceBridgeGameObject", "OnAndroidServiceMessage", "");
+        // unity send message approach
+        mUnityPlayer = new UnityPlayer(this);
+        mUnityPlayer.UnitySendMessage("UnityServiceBridgeGameObject", "OnAndroidServiceMessage", "calling OnAndroidServiceMessage");
 
-//        // Android background
-//        Timer timer = new Timer();
-//        TimerTask task = new TimerTask() {
-//            @Override
-//            public void run() {
-//                System.out.println("Android-Testing background...");
-//            }
-//        };
-//
-//        // Schedule the task to run every 5 seconds (5000 milliseconds)
-//        timer.schedule(task, 0, 5000);
+        // Android background
+        Timer timer = new Timer();
+        TimerTask task = new TimerTask() {
+            @Override
+            public void run() {
+                System.out.println("Android sending message...");
+                mUnityPlayer.UnitySendMessage("UnityServiceBridgeGameObject", "OnAndroidServiceMessage", "calling OnAndroidServiceMessage");
+            }
+        };
+
+        // Schedule the task to run every 5 seconds (5000 milliseconds)
+        timer.schedule(task, 0, 5000);
     }
 
     @Override
