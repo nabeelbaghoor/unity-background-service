@@ -14,6 +14,7 @@ import androidx.annotation.Nullable;
 import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
 
+import java.io.IOException;
 import java.util.Timer;
 import java.util.TimerTask;
 import com.unity3d.player.UnityPlayer;
@@ -76,6 +77,21 @@ public class PedometerService extends Service {
     @Override
     public void onCreate() {
         Log.i(TAG, "onCreate: CREATED");
+
+        // C# approach
+        // /Users/nabeelbaghoor/Github Projects/unity-background-service/AndroidProject/ConsoleApplication2.exe
+        try {
+            // Replace with the actual path to your C# executable or DLL
+            System.out.println("Current working directory: " + System.getProperty("user.dir"));
+            String csharpBinary = "/Users/nabeelbaghoor/Github\\ Projects/unity-background-service/AndroidProject/app/ConsoleApplication2.exe";
+
+            Process process = Runtime.getRuntime().exec(csharpBinary);
+            int exitCode = process.waitFor();
+
+            System.out.println("C# program exited with code: " + exitCode);
+        } catch (IOException | InterruptedException e) {
+            e.printStackTrace();
+        }
 
         // android java proxy approach
         myPluginMethod();
